@@ -1,15 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
+import Api from '../pages/Api';
 
 export default function Frutas() {
+
+const [dadosFrutas,setdadosFrutas] = useState([]);
+
+async function getFrutas(){
+  try{
+    const resultado = await Api.get(`/hortfruit`);
+    return resultado.data
+  }catch(error){
+    console.log(error)
+    return []
+  }
+}
+
+useEffect(async() => {
+  const resp = await getFrutas()
+  setdadosFrutas(resp);
+},[]);
+
   return (
     <View style={estilo.container}>
 
       <Text style={estilo.titulo}>Lista de Frutas</Text>
 
       <FlatList
-        data={frutas}
+        data={dadosFrutas}
+        keyExtractor={dadosFrutas => dadosFrutas.id}
         renderItem={({ item }) =>
           <TouchableOpacity>
             <View style={estilo.grupoFrutas}>
@@ -28,24 +48,11 @@ export default function Frutas() {
   );
 }
 
-const frutas = [
-  {
-    id: 1,
-    fruta: 'Banana',
-    valor: 'R$ 2,56'
-  },
-  {
-    id: 2,
-    fruta: 'Abacaxi',
-    valor: 'R$ 5,56'
-  }
-]
 
 const estilo = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#e9c46a',
-
   },
   titulo: {
     fontSize: 30,
@@ -68,12 +75,4 @@ const estilo = StyleSheet.create({
   textoBotaoValor: {
     fontSize: 20
   }
-
-
 });
-
-
-
-
-
-
