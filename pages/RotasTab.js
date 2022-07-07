@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 export default function RotasTab() {
     return (
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown:false}}>
             
             <Tab.Screen
                 name="Pesquisa"
