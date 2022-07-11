@@ -1,32 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
-import Api from '../pages/Api';
+import Api from '../Api';
 
-export default function Frutas() {
+export default function ListarFrutas(props) {
 
-const [dadosFrutas,setdadosFrutas] = useState([]);
+  const [dadosFrutas, setdadosFrutas] = useState([]);
 
-async function getFrutas(){
-  try{
-    const resultado = await Api.get(`/hortfruit`);
-    return resultado.data
-  }catch(error){
-    console.log(error)
-    return []
+  async function getFrutas() {
+    try {
+      const resultado = await Api.get(`/hortfruit`);
+      return resultado.data
+    } catch (error) {
+      console.log(error)
+      return []
+    }
   }
-}
 
-useEffect(async() => {
-  const resp = await getFrutas()
-  setdadosFrutas(resp);
-},[]);
+  useEffect(async () => {
+    const resp = await getFrutas()
+    setdadosFrutas(resp);
+  }, []);
 
   return (
     <View style={estilo.container}>
 
       <Text style={estilo.titulo}>Lista de Frutas</Text>
 
+      <TouchableOpacity style={estilo.botaoCadFruta} onPress={()=> props.navigation.navigate('Alterar')} >
+        <Text style={estilo.botaoTextoCadFruta}>Cadastrar Fruta</Text>
+      </TouchableOpacity>
+      
       <FlatList
         data={dadosFrutas}
         keyExtractor={dadosFrutas => dadosFrutas.id}
@@ -74,5 +78,14 @@ const estilo = StyleSheet.create({
   },
   textoBotaoValor: {
     fontSize: 20
+  },
+  botaoCadFruta:{
+    backgroundColor: '#2a9d8f',
+    margin: 15,
+    padding: 5,
+    borderRadius: 10,
+  },
+  botaoTextoCadFruta:{
+    fontSize: 18
   }
 });

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import Home from "./Home.js";
-import Pesquisa from "./Pesquisa.js";
-import Frutas from "./Frutas.js";
+import Home from "./Home";
+import Pesquisa from "./Pesquisa";
+import RotasBotao from "./RotasBotao";
 
 const Tab = createBottomTabNavigator();
 
@@ -29,8 +29,8 @@ export default function RotasTab() {
             />
             
             <Tab.Screen
-                name="Frutas"
-                component={Frutas}
+                name="Rotas"
+                component={RotasBotao}
                 options={{
                     tabBarIcon: ({ color, size }) => <MaterialCommunityIcons name="fruit-grapes-outline" color={color} size={size} />
                 }}

@@ -1,4 +1,4 @@
-import Api from '../pages/Api';
+import Api from '../Api';
 
 export async function pesquisarNomeFruta(nomeFruta){
     try {

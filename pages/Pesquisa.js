@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {Text, View, StyleSheet,TextInput,TouchableOpacity,Alert} from 'react-native';
-import {pesquisarNomeFruta} from '../pages/ModelFrutas';
+import {pesquisarNomeFruta} from '../pages/Frutas/ModelFrutas';
 
 
 export default function Pesquisa(){
