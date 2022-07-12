@@ -35,6 +35,84 @@
       "fruta": "Abacate",
       "valor": "R$ 7,89",
       "foto": "/assets/abacaxi.jpg"
+    },
+    {
+      "id": "8",
+      "fruta": "Melao",
+      "valor": "123",
+      "foto": "/22"
+    },
+    {
+      "id": "9",
+      "fruta": "Pera",
+      "valor": "456",
+      "foto": "/23"
+    },
+    {
+      "id": "10",
+      "fruta": "Melancia",
+      "valor": "789",
+      "foto": "/89"
+    },
+    {
+      "id": "11",
+      "fruta": "Damasco",
+      "valor": "258",
+      "foto": "/753"
+    },
+    {
+      "id": "12",
+      "fruta": "Maça do amor",
+      "valor": "R$ 23.69",
+      "foto": "/5898"
+    },
+    {
+      "id": "13",
+      "fruta": "Kaqui",
+      "valor": "R$ 25,36",
+      "foto": "/89"
+    },
+    {
+      "id": "14",
+      "fruta": "Pirao",
+      "valor": "R$ 56.36",
+      "foto": "/986"
+    },
+    {
+      "id": "15",
+      "fruta": "Pirao",
+      "valor": "R$ 56.36",
+      "foto": "/986"
+    },
+    {
+      "id": "16",
+      "fruta": "4545",
+      "valor": "454",
+      "foto": "4545"
+    },
+    {
+      "id": "18",
+      "fruta": "555",
+      "valor": "555",
+      "foto": "555"
+    },
+    {
+      "id": "19",
+      "fruta": "555",
+      "valor": "555",
+      "foto": "55555"
+    },
+    {
+      "id": "20",
+      "fruta": "666",
+      "valor": "666",
+      "foto": "666"
+    },
+    {
+      "id": "21",
+      "fruta": "2121",
+      "valor": "2121",
+      "foto": "212"
     }
   ]
 }

@@ -1,53 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, StyleSheet, FlatList, TouchableOpacity, Alert } from 'react-native';
-import Api from '../Api';
+import { useIsFocused } from '@react-navigation/native';
+import { buscarTodasFrutas } from './ModelFrutas';
 
-export default function ListarFrutas(props) {
+export default function ListarFrutas({navigation}) {
 
   const [dadosFrutas, setdadosFrutas] = useState([]);
-
-  async function getFrutas() {
-    try {
-      const resultado = await Api.get(`/hortfruit`);
-      return resultado.data
-    } catch (error) {
-      console.log(error)
-      return []
-    }
-  }
-
+  const isFocused = useIsFocused();
+    
   useEffect(async () => {
-    const resp = await getFrutas()
+    const resp = await buscarTodasFrutas();
     setdadosFrutas(resp);
-  }, []);
+    
+  },[isFocused]);
 
   return (
     <View style={estilo.container}>
 
       <Text style={estilo.titulo}>Lista de Frutas</Text>
 
-      <TouchableOpacity style={estilo.botaoCadFruta} onPress={()=> props.navigation.navigate('Alterar')} >
+      <TouchableOpacity style={estilo.botaoCadFruta} onPress={() => navigation.navigate('Cadastrar')} >
         <Text style={estilo.botaoTextoCadFruta}>Cadastrar Fruta</Text>
       </TouchableOpacity>
-      
-      <FlatList
-        data={dadosFrutas}
-        keyExtractor={dadosFrutas => dadosFrutas.id}
-        renderItem={({ item }) =>
-          <TouchableOpacity>
-            <View style={estilo.grupoFrutas}>
-
-              <Text style={estilo.textoBotaoFruta}>{item.fruta}</Text>
-              <Text style={estilo.textoBotaoValor}>{item.valor}</Text>
-
-            </View>
-          </TouchableOpacity>
-
-        }
-      />
-
       <StatusBar style="auto" />
+    
+          <FlatList
+            data={dadosFrutas}
+            keyExtractor={dadosFrutas => dadosFrutas.id}
+            renderItem={({ item }) =>
+              <TouchableOpacity>
+                <View style={estilo.grupoFrutas}>
+
+                  <Text style={estilo.textoBotaoFruta}>{item.fruta}</Text>
+                  <Text style={estilo.textoBotaoValor}>{item.valor}</Text>
+
+                </View>
+              </TouchableOpacity>
+
+            }
+          />
     </View>
   );
 }
@@ -79,13 +71,13 @@ const estilo = StyleSheet.create({
   textoBotaoValor: {
     fontSize: 20
   },
-  botaoCadFruta:{
+  botaoCadFruta: {
     backgroundColor: '#2a9d8f',
     margin: 15,
     padding: 5,
     borderRadius: 10,
   },
-  botaoTextoCadFruta:{
+  botaoTextoCadFruta: {
     fontSize: 18
   }
 });

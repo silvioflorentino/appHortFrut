@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, Alert, TouchableOpacity, TextInput } from 'react-native';
 import { alterarFrutas, deletarFrutas } from './ModelFrutas';
 
-export default function AlterarFruta() {
+export default function AlterarFruta({navigation}) {
     const [idp, setIdp] = useState('');
     const [frutap, setFrutap] = useState('');
     const [valorp, setValorp] = useState('');
@@ -12,6 +12,7 @@ export default function AlterarFruta() {
         const resultado = await alterarFrutas(idp, frutap, valorp, fotop);
         if (resultado == 'Sucesso') {
             Alert.alert('Fruta alterado com Sucesso!!');
+            navigation.goBack();
         } else {
             Alert.alert('Erro ao cadastrar a fruta');
         }
